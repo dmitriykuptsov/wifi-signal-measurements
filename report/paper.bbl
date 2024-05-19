@@ -1,3 +1,8 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{gstools}
+S.~Müller and L.~Schüler.
+\newblock {GSTools v1.3: a toolbox for geostatistical modelling in Python,}.
+\newblock {\em {Geosci. Model Dev.}}, 15:3161–--3182, 2022.
 
 \end{thebibliography}

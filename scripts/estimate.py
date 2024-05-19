@@ -3,7 +3,7 @@ import numpy as np
 
 import gstools as gs
 
-timestamp, signal, x, y, z, lat, lng = np.loadtxt("dataset.csv").T
+timestamp, signal, x, y, z, lat, lng = np.loadtxt("../data/dataset.csv").T
 
 bin_center, vario = gs.vario_estimate(
     (lat, lng), signal, latlon=True, geo_scale=gs.KM_SCALE
@@ -11,8 +11,9 @@ bin_center, vario = gs.vario_estimate(
 
 model = gs.Spherical(latlon=True, geo_scale=gs.KM_SCALE)
 model.fit_variogram(bin_center, vario, nugget=False)
-#ax = model.plot("vario_yadrenko", x_max=max(bin_center))
-#ax.scatter(bin_center, vario)
+ax = model.plot(x_max=max(bin_center))
+ax.scatter(bin_center, vario)
+ax.figure.savefig("variogram.pdf")
 print(model)
 
 ok = gs.krige.Ordinary(
@@ -29,7 +30,6 @@ ok(return_var=False, store="signal_field")
 #ok(only_mean=True, store="mean_field")
 
 levels = np.linspace(-100, -30, 70)
-#levels = np.linspace(5, 25, 64)
 fig, ax = plt.subplots(1, 2, figsize=[10, 5], sharey=True)
 
 print(len(g_lat))
