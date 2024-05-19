@@ -1,3 +1,3 @@
-# WiFi 4 experiments
+# WiFi 5 experiments
 
-# wifi-signal-measurements
+WiFi signal measurements and interpolation with the Ordinary Kriging
