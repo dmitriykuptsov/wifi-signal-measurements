@@ -1,0 +1,6 @@
+data<-read.csv("signal.txt", header=T)
+pdf("qq_plot.pdf")
+par(mfrow=c(2, 1))
+hist(as.numeric(data$Signal), main="Distribution of signal strengths", xlab="Signal dBm")
+qqnorm(as.numeric(data$Signal))
+dev.off()
